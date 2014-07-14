@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>MapServer Project Status Report</title>
+
+        <meta name="description" content="MapServer Project Status Report at FOSS4G-Europe 2014.">
+        <meta name="author" content="Stephan Meissl, Thomas Bonfort">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.min.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/osgeo.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="reveal.js/lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <div class="slides">
+
+                <section>
+                    <section>
+                        <img alt="MapServer" style="background-color:rgba(255, 255, 255, 0); box-shadow:0 0 0;" src="images/mapserver-logo.png" />
+                        <h2>Project Status Report</h2>
+                        <p>FOSS4G-Europe 2014 - Bremen - 2014-07-15</p>
+                        <br/>
+                        <p>Stephan Meißl <a href="mailto:stephan.meissl@eox.at">stephan.meissl@eox.at</a> <a href="https://twitter.com/Schpidi">@Schpidi</a></p>
+                        <p>Thomas Bonfort <a href="mailto:tbonfort@terriscope.fr">tbonfort@terriscope.fr</a> <a href="https://twitter.com/tbonfort">@tbonfort</a></p>
+                        <br/>
+                        <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; margin:0 0 12px 0;" src="http://i.creativecommons.org/l/by/4.0/80x15.png" /></a><small>&nbsp;This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</small></p>
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>What is MapServer?</h2>
+                        <ul>
+                            <li>Open Source platform for publishing spatial data and interactive mapping applications to the Web</li>
+                            <li>MIT-style license</li>
+                            <li>Runs on all major platforms (Windows, Linux, Mac OS X)</li>
+                            <li>OSGeo project</li>
+                            <li><a href="http://mapserver.org">mapserver.org</a></li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>MapServer History</h2>
+                        <ul>
+                            <li>1989-90: Tim Berners-Lee invents the World Wide Web</li>
+                            <img alt="Tim Berners-Lee" src="images/berners-lee.png" />
+                            <li>1994: Steve Lime implements Web-based Arc/Info AML generator</li>
+                            <img alt="Steve Lime" src="images/lime.png" />
+                            <li>1995: NASA Fornet project &rArr; imgserv</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>1994-95?: Frank Warmerdam releases Shapelib</li>
+                            <img alt="Frank Warmerdam" src="images/warmerdam.png" />
+                            <li>1996: Shapelib + GD &rArr; mapserv</li>
+                            <li>1997: v1.0 (limited sharing)</li>
+                            <li>1998: v2.0 via Fornet website</li>
+                            <li>1999: v3.0 via UMN MapServer website</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>2000: Daniel Morissette joins development &rArr; Need for distributed collaboration tools (CSV, Bugzilla, Wiki)</li>
+                            <img alt="Daniel Morissette" src="images/morissette.png" />
+                            <li>2000+: Further contributors start joining quickly</li>
+                            <img alt="Further contributors" src="images/dm-solutions.png" />
+                            <li>2000: v3.1 including MapScript</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>2001: PostGIS support by Paul Ramsey in v3.6</li>
+                            <img alt="Paul Ramsey" src="images/ramsey.png" />
+                            <li>2002: GRASS Users Conference - Trento</li>
+                            <img alt="GRASS Users Conference" src="images/grass-2002.png" />
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>2003-05: Yearly MapServer Users Meeting (MUM)<br/>
+                            (Minneapolis, Ottawa, &amp; Minneapolis)</li>
+                            <img alt="" src="images/mum-2003.png" /><br/>
+                            <img alt="" src="images/mum-2004.png" /><br/>
+                            <img alt="" src="images/mum-2005.png" />
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>2005: MapServer Book by Tyler Mitchell</li>
+                            <img alt="Tyler Mitchell" src="images/mitchell.png" /> <img alt="MapServer Book" src="images/book.png" />
+                            <li>February 4, 2006: Foundation of OSGeo<br/>
+                            MapServer is among eight founding projects</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>2006+: FOSS4G Conferences (Lausanne, Victoria, Cape Town, Sydney, Barcelona, Denver, Nottingham, and Portland)</li>
+                            <img alt="FOSS4G 2006" src="images/foss4g-2006.png" />
+                            <img alt="FOSS4G 2007" src="images/foss4g-2007.png" />
+                            <img alt="FOSS4G 2008" src="images/foss4g-2008.png" />
+                            <img alt="FOSS4G 2009" src="images/foss4g-2009.png" />
+                            <img alt="FOSS4G 2010" src="images/foss4g-2010.png" />
+                            <img alt="FOSS4G 2011" src="images/foss4g-2011.png" />
+                            <img alt="FOSS4G 2013" src="images/foss4g-2013.png" />
+                            <img alt="FOSS4G 2014" src="images/foss4g-2014.png" />
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>2009+: C Tribe Code Sprints (Toronto, New York, Montreal, Island Wood, Boston, Vienna)</li>
+                            <img alt="C Tribe Code Sprint 2010" src="images/code-sprint-2010.png" />
+                            <img alt="C Tribe Code Sprint 2011" src="images/code-sprint-2011.png" />
+                            <img alt="C Tribe Code Sprint 2013" src="images/code-sprint-2013.png" />
+                            <img alt="C Tribe Code Sprint 2014" src="images/code-sprint-2014.jpg" />
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>2011: v6.0</li>
+                            <li>2012: Addition of TinyOWS &amp; MapCache &rArr; MapServer Suite (v6.2)</li>
+                            <li>2013: v6.4</li>
+                            <li>2014: v7.0</li>
+                            <li>20th anniversary this year</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Some statistics</h2>
+                        <ul>
+                            <li>~150k Lines Of Code</li>
+                            <li>~30 committers</li>
+                            <li>Mailing lists
+                            <ul>
+                                <li>-users ~1800</li>
+                                <li>-dev ~400</li>
+                            </ul>
+                            <li>International PSC</li>
+                            <ul>
+                                <li>14 members</li>
+                                <li>NA: 9 (US: 5, CA: 4)</li>
+                                <li>EU: 5 (FR: 2, IT: 1, AT: 1, HU: 1)</li>
+                            </ul>
+                            <li>109 RFCs</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>MapServer 7.0</h2>
+                        <ul>
+                            <li>Main new features</li>
+                            <ul>
+                                <li>UTFGrids</li>
+                                <li>WFS 2.0</li>
+                                <li>Heatmaps/Density Maps</li>
+                                <li>Javascript/V8 StyleItem/Geomtransform</li>
+                                <li>Unification of attribute/geometry filtering</li>
+                            </ul>
+                            <li>Others
+                            <ul>
+                                <li>Text rendering re-factoring</li>
+                                <li>GD Removal</li>
+                                <li>Removed BITMAP labels</li>
+                                <li>Support for multiple encodings</li>
+                                <li>WCS 2.0 extensions</li>
+                            </ul>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>UTFGrids</h2>
+                        <ul>
+                            <li>Specification by MapBox for vector tiles</li>
+                            <li>Implemented in a "Google Summer of Code" project</li>
+                            <li>Interactivity important (rollover, events JS)</li>
+                            <li>Supported by OpenLayers</li>
+                            <li>Not yet supported in MapCache</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>WFS 2.0</h2>
+                        <ul>
+                            <li>Download Services INSPIRE</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>HeatMaps</h2>
+                        <ul>
+                            <li>Vector to raster processing pipeline</li>
+                            <li>Interpolation and rendering parameters</li>
+                            <ul>
+                                <li>Automatic scaling</li>
+                                <li>Interpolation in color spaces RGB / HSL</li>
+                                <li>Weighting per attribute/expression</li>
+                            </ul>
+                            <li>Supports tile mode</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <img src="images/heatmap-hsl.png"/>
+                        <p>Interpolation in HSL color space</p>
+                    </section>
+                    <section>
+                        <img src="images/heatmap-hsl-10.png"/>
+                        <p>Interpolation in HSL color space</p>
+                    </section>
+                    <section>
+                        <img src="images/heatmap-rgb.png"/>
+                        <p>Interpolation in RGB color space</p>
+                    </section>
+                    <section>
+                        <img src="images/heatmap-hsl-density.png"/>
+                        <p>Pure density</p>
+                    </section>
+                    <section>
+                        <img src="images/heatmap-hsl-fix-scale.png"/>
+                        <p>Setting a fixed scale</p>
+                    </section>
+
+                    <section>
+                        <h2>Javascript (V8) StyleItem/GeomTransfom</h2>
+                        <ul>
+                            <li>Integration of the V8 library</li>
+                            <li>Handling geometries/features based on attributes</li>
+                            <li>Handling styles and symbols based on attributes</li>
+                            <li>"Experimental mode": backward compatibility not guaranteed</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Unification of attribute/geometry filtering</h2>
+                        <ul>
+                            <li>Currently filtering done by MapServer</li>
+                            <li>PostGIS, Oracle, OGR support native spatial filtering (e.g. "where st_intersects(the_geom, st_geomfromtext('wkt...'))")</li>
+                            <li>Performance gain particularly in WFS queries</li>
+                            <li>Currently blocking release of version 7.0</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Text rendering re-factoring</h2>
+                        <ul>
+                            <li>Naive implementation duplicated for each back-end</li>
+                            <li>Integration of Harfbuzz library</li>
+                            <li>Barely visible to the end user, but</li>
+                            <ul>
+                                <li>Exact alignment/centering of text</li>
+                                <li>Possibility of using a font per language</li>
+                                <li>Full Unicode support</li>
+                            </ul>
+                        </ul>
+                    </section>
+                    <section>
+                        <img src="images/labelcache.png"/>
+                        <p>Improving performance</p>
+                    </section>
+                    <section>
+                        <img src="images/world-ml.png"/>
+                        <p>Example Malayalam</p>
+                    </section>
+                    <section>
+                        <img src="images/world-dz.png"/>
+                        <p>Example Tibéto-Birman</p>
+                    </section>
+
+                    <section>
+                        <h2>GD Removal</h2>
+                        <ul>
+                            <li>Added in 1995</li>
+                            <li>Too high maintenance cost despite its usefulness in certain niches</li>
+                            <li>Automatic fall-back to AGG + 8bit</li>
+                        </ul>
+                        <br/><br/>
+                        <h2>Removed BITMAP labels</h2>
+                        <ul>
+                            <li>Truetype font included by default</li>
+                            <li>Supports many glyphs without external dependencies</li>
+                            <li>A few use cases are not supported</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Support for multiple encodings</h2>
+                        <ul>
+                            <li>Encoding handling problem</li>
+                            <li>Limitation that mapfile has to use same encoding as data sources</li>
+                            <li>7.0: full UTF-8 support</li>
+                            <li>Data sources converted into UTF-8</li>
+                            <li>The mapfile <b>has to</b> be encoded in UTF-8 now</li>
+                            <li>Documents are generated in UTF-8</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>WCS 2.0 extensions</h2>
+                        <ul>
+                            <li>Officially released beginning of the year</li>
+                            <li>Passes CITE tests</li>
+                            <li>Official OGC WCS 2.0 Reference Implementation</li>
+                        </ul>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h2>Documentation translation</h2>
+                        <ul>
+                            <li>Started to use transifex for simple collaboration</li>
+                            <li>Attract further translations</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>MapCache</h2>
+                        <ul>
+                            <li>REST Back-end</li>
+                            <ul>
+                                <li>Support GET/PUT/DELETE for storing tiles</li>
+                                <li>Authentication/authorization plug-ins for S3, Azure, and Google Cloud Storage</li>
+                                <li>Costs highly depend on the use case (number of applications, bandwidth)</li>
+                            </ul>
+                            <li>TIME animations</li>
+                            <ul>
+                                <li>Extend existing TIME support</li>
+                                <li>Mode "animation"</li>
+                                <li>Animated GIFs for now, video formats possible</li>
+                            </ul>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>How to Contribute?</h2>
+                        <ul>
+                            <li>Users</li>
+                            <ul>
+                                <li>Beta and release candidate testing</li>
+                                <li>Bug reports on Github, including test cases</li>
+                                <li>Documentation (wiki, transifex, Github pull requests)</li>
+                                <li>Answers on the mapserver-users list and IRC</li>
+                            </ul>
+                            <li>Developers</li>
+                            <ul>
+                                <li>Bug fixes/patches</li>
+                                <li>New features</li>
+                                <li>Binary builds</li>
+                            </ul>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <img alt="MapServer" style="background-color:rgba(255, 255, 255, 0); box-shadow:0 0 0;" src="images/mapserver-logo.png" />
+                    <h2>Project Status Report</h2>
+                    <p>FOSS4G-Europe 2014 - Bremen - 2014-07-15</p>
+                    <p><a href="http://schpidi.github.io/foss4g-e_2014_mapserver_project_status_report">schpidi.github.io/foss4g-e_2014_mapserver_project_status_report</a></p>
+                    <br/>
+                    <p>Stephan Meißl <a href="mailto:stephan.meissl@eox.at">stephan.meissl@eox.at</a> <a href="https://twitter.com/Schpidi">@Schpidi</a></p>
+                    <p>Thomas Bonfort <a href="mailto:tbonfort@terriscope.fr">tbonfort@terriscope.fr</a> <a href="https://twitter.com/tbonfort">@tbonfort</a></p>
+                    <br/>
+                    <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; margin:0 0 12px 0;" src="http://i.creativecommons.org/l/by/4.0/80x15.png" /></a><small>&nbsp;This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</small></p>
+                    <aside class="notes">
+                    </aside>
+                </section>
+
+            </div>
+
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                keyboard: true,
+                touch: true,
+                overview: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
