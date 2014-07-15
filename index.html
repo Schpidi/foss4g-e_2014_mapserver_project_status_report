@@ -145,12 +145,12 @@
                             <li>2012: Addition of TinyOWS &amp; MapCache &rArr; MapServer Suite (v6.2)</li>
                             <li>2013: v6.4</li>
                             <li>2014: v7.0</li>
-                            <li>20th anniversary this year</li>
+                            <li>20th anniversary</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h2>Some statistics</h2>
+                        <h2>Statistics</h2>
                         <ul>
                             <li>~150k Lines Of Code</li>
                             <li>~30 committers</li>
@@ -165,7 +165,7 @@
                                 <li>NA: 9 (US: 5, CA: 4)</li>
                                 <li>EU: 5 (FR: 2, IT: 1, AT: 1, HU: 1)</li>
                             </ul>
-                            <li>109 RFCs</li>
+                            <li>110 RFCs</li>
                         </ul>
                     </section>
                 </section>
@@ -187,7 +187,7 @@
                                 <li>Text rendering re-factoring</li>
                                 <li>GD Removal</li>
                                 <li>Removed BITMAP labels</li>
-                                <li>Support for multiple encodings</li>
+                                <li>Layer Level Encoding</li>
                                 <li>WCS 2.0 extensions</li>
                             </ul>
                         </ul>
@@ -248,10 +248,28 @@
                     <section>
                         <h2>Javascript (V8) StyleItem/GeomTransfom</h2>
                         <ul>
-                            <li>Integration of the V8 library</li>
-                            <li>Handling geometries/features based on attributes</li>
-                            <li>Handling styles and symbols based on attributes</li>
+                            <li>Integration of the V8 JavaScript engine</li>
+                            <li>Style geometries/features programatically rather than through class expressions</li>
                             <li>"Experimental mode": backward compatibility not guaranteed</li>
+                            <pre><code data-trim contenteditable>
+LAYER
+    ...
+    STYLEITEM "javascript:///path/to/my/file.js"
+    CLASS # empty class required
+    END
+END
+                            </code></pre>
+                            <pre><code data-trim contenteditable>
+//Make symbol size 14 or 7
+  var size = shape.attributes.NAME.length > 10 ? 14:7;
+
+  var style = "STYLE SIZE " + size;
+  style += " SYMBOL 'circle'";
+  style += " COLOR 255 0 0 END";
+
+  //Return style to MapServer
+  style;
+                            </code></pre>
                         </ul>
                     </section>
 
@@ -260,7 +278,8 @@
                         <ul>
                             <li>Currently filtering done by MapServer</li>
                             <li>PostGIS, Oracle, OGR support native spatial filtering (e.g. "where st_intersects(the_geom, st_geomfromtext('wkt...'))")</li>
-                            <li>Performance gain particularly in WFS queries</li>
+                            <li>Significant performance gain particularly in WFS queries</li>
+                            <li>Simpler to use</li>
                             <li>Currently blocking release of version 7.0</li>
                         </ul>
                     </section>
@@ -268,13 +287,18 @@
                     <section>
                         <h2>Text rendering re-factoring</h2>
                         <ul>
-                            <li>Naive implementation duplicated for each back-end</li>
+                            <li>Before naive implementation duplicated for each back-end</li>
                             <li>Integration of Harfbuzz library</li>
+                            <li>Supports complex text layout e.g. for Arabic text</li>
+                            <ul><img alt="Complex text layout" style="float: right" src="images/arabic.png" />
+                                <li>Unprocessed characters</li>
+                                <li>With bi-directional processing</li>
+                                <li>With glyph shaping rendering letters according to context</li>
+                            </ul>
                             <li>Barely visible to the end user, but</li>
                             <ul>
-                                <li>Exact alignment/centering of text</li>
-                                <li>Possibility of using a font per language</li>
-                                <li>Full Unicode support</li>
+                                <li>Exact label placement (alignment/centering/letter spacing of text)</li>
+                                <li>Possibility of using one font per language</li>
                             </ul>
                         </ul>
                     </section>
@@ -294,35 +318,34 @@
                     <section>
                         <h2>GD Removal</h2>
                         <ul>
-                            <li>Added in 1995</li>
-                            <li>Too high maintenance cost despite its usefulness in certain niches</li>
+                            <li>Added back in 1995</li>
+                            <li>Too high maintenance costs despite its usefulness in certain niches</li>
                             <li>Automatic fall-back to AGG + 8bit</li>
                         </ul>
                         <br/><br/>
                         <h2>Removed BITMAP labels</h2>
                         <ul>
-                            <li>Truetype font included by default</li>
+                            <li>Truetype font included by default now</li>
                             <li>Supports many glyphs without external dependencies</li>
                             <li>A few use cases are not supported</li>
+                            <li>Automatic fall-back in place</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h2>Support for multiple encodings</h2>
+                        <h2>Layer Level Encoding</h2>
                         <ul>
-                            <li>Encoding handling problem</li>
-                            <li>Limitation that mapfile has to use same encoding as data sources</li>
-                            <li>7.0: full UTF-8 support</li>
-                            <li>Data sources converted into UTF-8</li>
-                            <li>The mapfile <b>has to</b> be encoded in UTF-8 now</li>
-                            <li>Documents are generated in UTF-8</li>
+                            <li>Solves encoding handling problems e.g. data sources in multiple encodings in a single mapfile</li>
+                            <li>Data sources internally converted to UTF8</li>
+                            <li>The mapfile <b>has to</b> be encoded in UTF8 now</li>
+                            <li>All output generated by MapServer in UTF8</li>
                         </ul>
                     </section>
                     <section>
                         <h2>WCS 2.0 extensions</h2>
                         <ul>
                             <li>Officially released beginning of the year</li>
-                            <li>Passes CITE tests</li>
+                            <li>Passes all available CITE tests</li>
                             <li>Official OGC WCS 2.0 Reference Implementation</li>
                         </ul>
                     </section>
@@ -384,6 +407,7 @@
                     <br/>
                     <p>Stephan Meißl <a href="mailto:stephan.meissl@eox.at">stephan.meissl@eox.at</a> <a href="https://twitter.com/Schpidi">@Schpidi</a></p>
                     <p>Thomas Bonfort <a href="mailto:tbonfort@terriscope.fr">tbonfort@terriscope.fr</a> <a href="https://twitter.com/tbonfort">@tbonfort</a></p>
+                    <p>Special thanks to Daniel Morissette for his help with the MapServer history slides</p>
                     <br/>
                     <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; margin:0 0 12px 0;" src="http://i.creativecommons.org/l/by/4.0/80x15.png" /></a><small>&nbsp;This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</small></p>
                     <aside class="notes">
