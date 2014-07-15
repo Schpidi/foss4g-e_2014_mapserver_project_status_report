@@ -198,7 +198,7 @@
                         <ul>
                             <li>Specification by MapBox for vector tiles</li>
                             <li>Implemented in a "Google Summer of Code" project</li>
-                            <li>Interactivity important (rollover, events JS)</li>
+                            <li>Interactivity important (rollover, events)</li>
                             <li>Supported by OpenLayers</li>
                             <li>Not yet supported in MapCache</li>
                         </ul>
@@ -207,7 +207,7 @@
                     <section>
                         <h2>WFS 2.0</h2>
                         <ul>
-                            <li>Download Services INSPIRE</li>
+                            <li>Download Services for INSPIRE</li>
                         </ul>
                     </section>
 
@@ -218,7 +218,7 @@
                             <li>Interpolation and rendering parameters</li>
                             <ul>
                                 <li>Automatic scaling</li>
-                                <li>Interpolation in color spaces RGB / HSL</li>
+                                <li>Interpolation in color spaces RGB/HSL</li>
                                 <li>Weighting per attribute/expression</li>
                             </ul>
                             <li>Supports tile mode</li>
@@ -277,7 +277,10 @@ END
                         <h2>Unification of attribute/geometry filtering</h2>
                         <ul>
                             <li>Currently filtering done by MapServer</li>
-                            <li>PostGIS, Oracle, OGR support native spatial filtering (e.g. "where st_intersects(the_geom, st_geomfromtext('wkt...'))")</li>
+                            <li>PostGIS, Oracle, OGR support native spatial filtering e.g.</li>
+                            <pre><code data-trim contenteditable>
+where st_intersects(the_geom, st_geomfromtext('wkt...'))
+                            </code></pre>
                             <li>Significant performance gain particularly in WFS queries</li>
                             <li>Simpler to use</li>
                             <li>Currently blocking release of version 7.0</li>
